@@ -1,0 +1,39 @@
+import java.util.*;
+import java.text.DecimalFormat;
+
+public class MyProgram
+{
+    //Run|Debug
+    public static void main(String[] args)
+    {
+        try (Scanner input = new Scanner(System.in)){
+            int loop = input.nextInt();
+            for(int i =0; i<loop; i++){
+                double sum = 0;
+                int n = input.nextInt();
+                double[] array = new double[n];
+                for(int j=0; j<n; j++){
+                    int grade = input.nextInt();
+                    sum+= grade;
+                    array[j]= grade;
+                }
+                
+                double average = sum/n;
+                double totals = 0;
+                for(int p = 0; p<array.length; p++){
+                    if(array[p]>average){
+                        totals += 1;
+                    }
+                }
+                double aboveAverage = totals/n*100;
+                DecimalFormat df_obj = new DecimalFormat("#.###");
+                if(aboveAverage%10 ==0){
+                    System.out.println(aboveAverage+"00%");
+                }
+                else{
+                    System.out.println(df_obj.format(aboveAverage)+"%");
+                }
+            }
+        }
+    }
+}
